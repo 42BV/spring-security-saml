@@ -1,26 +1,25 @@
 package org.springframework.security.saml.trust.httpclient;
 
 import org.apache.commons.httpclient.params.HttpConnectionParams;
-import org.apache.commons.httpclient.protocol.Protocol;
-import org.apache.commons.httpclient.protocol.ProtocolSocketFactory;
 import org.apache.commons.httpclient.protocol.SecureProtocolSocketFactory;
 import org.opensaml.xml.security.CriteriaSet;
 import org.opensaml.xml.security.trust.TrustEngine;
-import org.opensaml.xml.security.x509.*;
+import org.opensaml.xml.security.x509.BasicPKIXValidationInformation;
+import org.opensaml.xml.security.x509.BasicX509CredentialNameEvaluator;
+import org.opensaml.xml.security.x509.CertPathPKIXValidationOptions;
+import org.opensaml.xml.security.x509.PKIXValidationInformation;
+import org.opensaml.xml.security.x509.PKIXValidationInformationResolver;
+import org.opensaml.xml.security.x509.PKIXX509CredentialTrustEngine;
+import org.opensaml.xml.security.x509.StaticPKIXValidationInformationResolver;
+import org.opensaml.xml.security.x509.X509Credential;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.security.saml.key.KeyManager;
-import org.springframework.security.saml.metadata.MetadataManager;
 import org.springframework.security.saml.trust.CertPathPKIXTrustEvaluator;
 import org.springframework.security.saml.trust.X509KeyManager;
 import org.springframework.security.saml.trust.X509TrustManager;
 import org.springframework.security.saml.util.SAMLUtil;
 
-import javax.annotation.PostConstruct;
 import javax.net.ssl.HostnameVerifier;
 import java.io.IOException;
 import java.net.InetAddress;

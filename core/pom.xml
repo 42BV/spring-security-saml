@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.springframework.security.extensions</groupId>
   <artifactId>spring-security-saml2-core</artifactId>
-  <version>1.0.9.RELEASE</version>
+  <version>1.0.9.MAINTENANCE.1</version>
   <name>Spring Security SAML v2 library</name>
   <description>Spring Security SAML v2 library</description>
   <url>https://github.com/SpringSource/spring-security-saml</url>
@@ -57,13 +57,27 @@
     <system>jira</system>
     <url>https://jira.springsource.org/browse/SES</url>
   </issueManagement>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jdk.version>1.8</jdk.version>
+  </properties>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+          <configuration>
+            <source>${jdk.version}</source>
+            <target>${jdk.version}</target>
+            <encoding>${project.build.sourceEncoding}</encoding>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
   <dependencies>
-    <dependency>
-      <groupId>com.narupley</groupId>
-      <artifactId>not-going-to-be-commons-ssl</artifactId>
-      <version>0.3.20</version>
-      <scope>compile</scope>
-    </dependency>
     <dependency>
       <groupId>org.apache.santuario</groupId>
       <artifactId>xmlsec</artifactId>
@@ -113,10 +127,6 @@
         <exclusion>
           <artifactId>jul-to-slf4j</artifactId>
           <groupId>org.slf4j</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>not-yet-commons-ssl</artifactId>
-          <groupId>ca.juliusdavies</groupId>
         </exclusion>
         <exclusion>
           <artifactId>bcprov-jdk15on</artifactId>
